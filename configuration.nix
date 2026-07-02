@@ -119,6 +119,7 @@
   environment.systemPackages = with pkgs; [
     # This ensures your overridden appimage-run is actually used by the system!
     config.programs.appimage.package
+    kdePackages.partitionmanager
 
     # Global Python environment wrapped with your required libraries
     (python3.withPackages (ps: with ps; [
@@ -145,6 +146,7 @@
     # Browsers & Apps
     brave
     spotify
+    chromium
 
     # BurpSuite
     burpsuite
@@ -237,6 +239,9 @@
       '';
     })
   ];
+
+  #Kde Partition Manager
+  security.polkit.enable = true;
 
   # Global Environment Variables
   environment.variables.PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
